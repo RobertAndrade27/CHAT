@@ -11,31 +11,31 @@ server.listen(3000);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-let connecteddUsers = [];
+let connectedUsers = [];
 
 io.on('connection', (socket) =>{
     console.log("Conexão detectada...");
 
     socket.on('join-request', (username) =>{
         socket.username = username;
-        connecteddUsers.push( username );
-        console.log( connecteddUsers );
+        connectedUsers.push( username );
+        console.log( connectedUsers );
 
-        socket.emit('user-ok', connecteddUsers);
+        socket.emit('user-ok', connectedUsers);
         socket.broadcast.emit('list-update', {
             joined: username,
-            list: connecteddUsers
+            list: connectedUsers
         });
     });
 
     socket.on('disconnect', () => {
 //primeira função remover
-        connecteddUsers = connecteddUsers.filter(u => u != socket.username);
-        console.log(connecteddUsers);
+connectedUsers = connectedUsers.filter(u => u != socket.username);
+        console.log(connectedUsers);
 
         socket.broadcast.emit('list-update', {
             left: socket.username,
-            list: connecteddUsers
+            list: connectedUsers
         })
     });
 
@@ -45,7 +45,7 @@ io.on('connection', (socket) =>{
             message: txt,
         };
 
-        socket.emit('show-msg', obj);
+        //socket.emit('show-msg', obj); a mensagem fica local, porém o broadcast envia para o servidor
         socket.broadcast.emit('show-msg', obj);
     });
 

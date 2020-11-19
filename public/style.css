@@ -5,8 +5,13 @@ ul,li {
     margin: 0;
     padding: 0;
     list-style:none ;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
+h1 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(255, 255, 255);
+}
 .page {
     height: 100vh;
     justify-content: center;
@@ -16,7 +21,7 @@ ul,li {
 
 #loginPage{
     display: flex;
-    background-color: #FFF;
+    background-color: rgb(6, 86, 92);
 }
 
 #loginNameInput {
@@ -49,7 +54,8 @@ ul,li {
 }
 .chatList li {
     padding: 3px;
-    font-size: 15px;
+    font-size: 18px;
+    
 }
 .chatList li.m-status {
     color:  rgb(209, 88, 8);
@@ -62,10 +68,10 @@ ul,li {
     }
 
 .chatList li.m-txt span.me {
-    color:  rgb(2, 168, 154);
+    color:  rgb(144, 224, 15);
     font-style: bold;
 }  
-.chatList li.m-txt mensagem.msg {
+.chatList li.m-txt {
     color:  rgb(255, 136, 0);
 }  
 .chatList li.m-txt convidado.cnv {
@@ -81,6 +87,10 @@ ul,li {
     padding: 5px;
     font-size: 15px;
     color: #FFF;
+    /*text-transform:uppercase; deixar tudo com letra maiuscula*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .chatInput {
